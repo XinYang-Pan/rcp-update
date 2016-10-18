@@ -1,4 +1,4 @@
-# rcp-update
+# RCP-Update
 This repo is to show how to work with RCP automatic update.
 
 #1 Plugin Project
@@ -164,24 +164,27 @@ public class UpdateHandler {
 
 }
 ```
-###1.3.3 Modify UI code
+###1.3.3 Modify UI code to add a new *Update* menu
 
 Add an update command
-
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765113081_12.png)
+Give a name
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765139744_30.png)
 
 Add an update handler
-
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765158120_17.png)
+Bind a command
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765196343_27.png)
+Bind a handler
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765216168_99.png)
+After change it should look like this
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765250799_31.png)
 
-Add an update menu
-
+Add an *Update* menu
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765278824_72.png)
+Bind a command to the menu
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765310711_25.png)
+After change it should look like this
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765324464_43.png)
 
 ###1.3.4 After all changes, we run our rcp application
@@ -191,7 +194,11 @@ We have to change run configure as following
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765523543_41.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765539198_96.png)
 
-Now we should be able to see the UI, and we could save the text and press **Update** Menu. However, the update function won't work, you should see this in eclipse console - *Trying to update from the Eclipse IDE? This won't work!*
+Now we should be able to see the UI, and we could save the text and press **Update** Menu. However, the update function won't work, but you should see this in eclipse console.
+
+```
+Trying to update from the Eclipse IDE? This won't work!
+```
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765563940_23.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765586020_16.png)
@@ -199,7 +206,6 @@ Now we should be able to see the UI, and we could save the text and press **Upda
 #2. Feature Project
 Create Feature Project is pretty straightforward.
 
-Create feature project from wizzard
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765757995_66.png)
 
 Give feature project a name, by convention it should be named as `<plugin name>.feature`
@@ -221,7 +227,7 @@ At last, we need to create product project, this project will contain nothing bu
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766245425_1.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766255775_88.png)
 
-##3.3 Change the *xdemo.product*
+##3.3 Change the *xdemo.product* to a features based product
 Add ID to the file and change the *Product Definition* from *plugins* to *features*
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766309379_7.png)
 Add features to *Contents* Tab
@@ -251,6 +257,18 @@ We should be able to see the same GUI as before
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771045966_74.png)
 
+xdemo.parts.SamplePart
+
+```diff
+-	private List<String> createInitialDataModel() {
+-		return Arrays.asList("Sample item 1", "Sample item 2", "Sample item 3", "Sample item 4", "Sample item 5", "New Item 1");
+-	}
++	private List<String> createInitialDataModel() {
++//		return Arrays.asList("Sample item 1", "Sample item 2", "Sample item 3", "Sample item 4", "Sample item 5");
++		return Arrays.asList("Sample item 1", "Sample item 2", "Sample item 3", "Sample item 4", "Sample item 5", "New Item 1");
++	}
+```
+
 ##4.3 We export/build our application again in a different location, we name it v2.
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771077010_48.png)
@@ -263,13 +281,15 @@ We should be able to see the same GUI as before
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771172262_87.png)
 
-there is no updates found, which is expected.
+There is no updates found, which is expected.
+
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771187869_47.png)
 
-prompt us to restart application when it's done
+Prompt us to restart application when it's done.
+
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771204206_55.png)
 
-After restart, we should be able to see the new changes
+After restart, we should be able to see the new changes.
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771215199_79.png)
 
 
