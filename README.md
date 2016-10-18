@@ -1,15 +1,15 @@
 # rcp-update
 This repo is to show how to work with RCP automatic update.
 
-#1. Plugin Project
-1. Create a plugin project called **xdemo**
+#1 Plugin Project
+##1.1 Create a plugin project called **xdemo**
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476763224965_34.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476763249332_18.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476763292688_88.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476763305103_57.png)
 
-1. Add p2 plugins to the dependencies
+##1.2 Add p2 plugins to the dependencies
   - org.eclipse.equinox.p2.core
   - org.eclipse.equinox.p2.engine
   - org.eclipse.equinox.p2.operations
@@ -17,10 +17,154 @@ This repo is to show how to work with RCP automatic update.
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476764022214_10.png)
 
-1. Add automatic update function to this plugin
-  1. Create a Model class
-  1. Create **UpdateHandler.class** with following content, this is the handler for automatic update
-  1. Modify UI code
+##1.3 Add automatic update function to this plugin
+###1.3.1 Create a Model class
+```Java
+package xdemo.model;
+
+public class RepoLocation {
+	public static final RepoLocation REPO_LOCATION = new RepoLocation();
+	
+	private String loc = "file:////C:/Repo";
+
+	public String getLoc() {
+		return loc;
+	}
+
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+	
+}
+```
+###1.3.2 Create **UpdateHandler.class** with following content, this is the handler for automatic update
+```Java
+package xdemo.handlers;
+
+import static xdemo.model.RepoLocation.REPO_LOCATION;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
+import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.ui.di.UISynchronize;
+import org.eclipse.e4.ui.workbench.IWorkbench;
+import org.eclipse.equinox.p2.core.IProvisioningAgent;
+import org.eclipse.equinox.p2.operations.ProvisioningJob;
+import org.eclipse.equinox.p2.operations.ProvisioningSession;
+import org.eclipse.equinox.p2.operations.UpdateOperation;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
+
+public class UpdateHandler {
+
+	@Execute
+	public void execute(final IProvisioningAgent agent, final Shell shell, final UISynchronize sync,
+			final IWorkbench workbench) {
+		Job updateJob = new Job("Update Job") {
+			@Override
+			protected IStatus run(final IProgressMonitor monitor) {
+				return checkForUpdates(agent, shell, sync, workbench, monitor);
+			}
+		};
+		updateJob.schedule();
+	}
+
+	private IStatus checkForUpdates(final IProvisioningAgent agent, final Shell shell, final UISynchronize sync,
+			final IWorkbench workbench, IProgressMonitor monitor) {
+
+		// configure update operation
+		final ProvisioningSession session = new ProvisioningSession(agent);
+		final UpdateOperation operation = new UpdateOperation(session);
+		configureUpdate(operation);
+
+		// check for updates, this causes I/O
+		final IStatus status = operation.resolveModal(monitor);
+
+		// failed to find updates (inform user and exit)
+		if (status.getCode() == UpdateOperation.STATUS_NOTHING_TO_UPDATE) {
+			showMessage(shell, sync);
+			return Status.CANCEL_STATUS;
+		}
+
+		// run installation
+		final ProvisioningJob provisioningJob = operation.getProvisioningJob(monitor);
+
+		// updates cannot run from within Eclipse IDE!!!
+		if (provisioningJob == null) {
+			System.err.println("Trying to update from the Eclipse IDE? This won't work!");
+			return Status.CANCEL_STATUS;
+		}
+		configureProvisioningJob(provisioningJob, shell, sync, workbench);
+
+		provisioningJob.schedule();
+		return Status.OK_STATUS;
+
+	}
+
+	private void configureProvisioningJob(ProvisioningJob provisioningJob, final Shell shell, final UISynchronize sync,
+			final IWorkbench workbench) {
+
+		// register a job change listener to track
+		// installation progress and notify user upon success
+		provisioningJob.addJobChangeListener(new JobChangeAdapter() {
+			@Override
+			public void done(IJobChangeEvent event) {
+				if (event.getResult().isOK()) {
+					sync.syncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							boolean restart = MessageDialog.openQuestion(shell, "Updates installed, restart?",
+									"Updates have been installed. Do you want to restart?");
+							if (restart) {
+								workbench.restart();
+							}
+						}
+					});
+
+				}
+				super.done(event);
+			}
+		});
+
+	}
+
+	private void showMessage(final Shell parent, final UISynchronize sync) {
+		sync.syncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				MessageDialog.openWarning(parent, "No update", "No updates for the current installation have been found. Loc="+REPO_LOCATION.getLoc());
+			}
+		});
+	}
+
+	private UpdateOperation configureUpdate(final UpdateOperation operation) {
+		// create uri and check for validity
+		URI uri = null;
+		try {
+			uri = new URI(REPO_LOCATION.getLoc());
+		} catch (final URISyntaxException e) {
+			System.err.println(e.getMessage());
+			return null;
+		}
+
+		// set location of artifact and metadata repo
+		operation.getProvisioningContext().setArtifactRepositories(new URI[] { uri });
+		operation.getProvisioningContext().setMetadataRepositories(new URI[] { uri });
+		return operation;
+	}
+
+}
+```
+###1.3.3 Modify UI code
 
 Add an update command
 
