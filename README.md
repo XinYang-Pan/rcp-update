@@ -199,27 +199,33 @@ Now we should be able to see the UI, and we could save the text and press **Upda
 #2. Feature Project
 Create Feature Project is pretty straightforward.
 
+Create feature project from wizzard
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765757995_66.png)
+
+Give feature project a name, by convention it should be named as `<plugin name>.feature`
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765765355_48.png)
+
+Add plugin  
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765780235_95.png)
 
 #3. Product Project
-At last, we need to create product project, this project will contain nothing but *.product* file. we could just move the *.product* file from the plugin project.
+At last, we need to create product project, this project will contain nothing but *.product* file. we could just move the *xdemo.product* file from the plugin project.
 
 ##3.1 Create a normal project
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766003689_54.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766010569_26.png)
 
-##3.2 Move the *.product* file from plugin project to product project
+##3.2 Move the *xdemo.product* file from plugin project to product project
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766245425_1.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766255775_88.png)
 
-##3.3 Change the *.product*
+##3.3 Change the *xdemo.product*
 Add ID to the file and change the *Product Definition* from *plugins* to *features*
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766309379_7.png)
 Add features to *Contents* Tab
+
 1. Add following features
 	- xdemo.feature
 	- org.eclipse.equinox.p2.core.feature
@@ -245,7 +251,7 @@ We should be able to see the same GUI as before
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771045966_74.png)
 
-##4.3 We export/build our application again in a different location, also we name it v2.
+##4.3 We export/build our application again in a different location, we name it v2.
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771077010_48.png)
 
@@ -256,8 +262,14 @@ We should be able to see the same GUI as before
 1. Now we dit the location to v2 repository, and press *Update* menu. Now updates should be start right away and prompt us to restart application when it's done
 
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771172262_87.png)
+
+there is no updates found, which is expected.
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771187869_47.png)
+
+prompt us to restart application when it's done
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771204206_55.png)
+
+After restart, we should be able to see the new changes
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771215199_79.png)
 
 
