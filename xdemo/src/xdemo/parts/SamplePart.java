@@ -18,6 +18,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
+import xdemo.model.RepoLocation;
+
 public class SamplePart {
 
 	private Text txtInput;
@@ -32,6 +34,7 @@ public class SamplePart {
 
 		txtInput = new Text(parent, SWT.BORDER);
 		txtInput.setMessage("Enter text to mark part as dirty");
+		txtInput.setText(RepoLocation.REPO_LOCATION.getLoc());
 		txtInput.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -55,6 +58,8 @@ public class SamplePart {
 	@Persist
 	public void save() {
 		dirty.setDirty(false);
+		RepoLocation.REPO_LOCATION.setLoc(txtInput.getText());
+		System.out.println(RepoLocation.REPO_LOCATION.getLoc());
 	}
 	
 	private List<String> createInitialDataModel() {
