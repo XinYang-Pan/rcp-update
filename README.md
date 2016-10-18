@@ -3,7 +3,9 @@ This repo is to show how to work with RCP automatic update.
 
 #1. Plugin Project
 1. Create a plugin project called **xdemo**
-pics
+
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476763224965_34.png)
+
 1. Add p2 plugins to the dependencies
   - org.eclipse.equinox.p2.core
   - org.eclipse.equinox.p2.engine
