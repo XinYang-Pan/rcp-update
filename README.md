@@ -199,26 +199,26 @@ Now we should be able to see the UI, and we could save the text and press **Upda
 #2. Feature Project
 Create Feature Project is pretty straightforward.
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765757995_66.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765765355_48.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476765780235_95.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765757995_66.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765765355_48.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/2.%20Feature%20Project/panxinyang_1476765780235_95.png)
 
 #3. Product Project
 At last, we need to create product project, this project will contain nothing but *.product* file. we could just move the *.product* file from the plugin project.
 
 ##3.1 Create a normal project
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766003689_54.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766010569_26.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766003689_54.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766010569_26.png)
 
 ##3.2 Move the *.product* file from plugin project to product project
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766245425_1.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766255775_88.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766245425_1.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766255775_88.png)
 
 ##3.3 Change the *.product*
 Add ID to the file and change the *Product Definition* from *plugins* to *features*
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766309379_7.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766309379_7.png)
 Add features to *Contents* Tab
 1. Add following features
 	- xdemo.feature
@@ -227,27 +227,27 @@ Add features to *Contents* Tab
 1. After add above features just press *Add Required* to add dependent features
 1. Now we should have 11 features totally
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766358099_94.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766428922_95.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766437154_63.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766358099_94.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766428922_95.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766437154_63.png)
 
 ##3.4 Now we run the application from current product file
 We should be able to see the same GUI as before
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476766507446_20.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/3.%20Product%20Project/panxinyang_1476766507446_20.png)
 
 #4 Update in Action
 ##4.1 We export/build our application, let's name it v1.
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771001281_20.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771001281_20.png)
 
 ##4.2 Now we make a change to application, like to add an new item
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771045966_74.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771045966_74.png)
 
 ##4.3 We export/build our application again in a different location, also we name it v2.
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771077010_48.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771077010_48.png)
 
 ##4.4 Now we run v1 application, it's in the v1 export location's sub folder *eclipse*
 1. The application should start, and we edit the text, which is the location of update repository path.
@@ -255,10 +255,10 @@ We should be able to see the same GUI as before
 1. Now we press *Update* menu. you should see a prompt that tells us there is no updates found, which is expected.
 1. Now we dit the location to v2 repository, and press *Update* menu. Now updates should be start right away and prompt us to restart application when it's done
 
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771172262_87.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771187869_47.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771204206_55.png)
-![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/1.%20Plugin%20Project/panxinyang_1476771215199_79.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771172262_87.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771187869_47.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771204206_55.png)
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771215199_79.png)
 
 
 
