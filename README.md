@@ -251,6 +251,7 @@ We should be able to see the same GUI as before
 #4 Update in Action
 ##4.1 We export/build our application, let's name it v1.
 
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/export.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771001281_20.png)
 
 ##4.2 Now we make a change to application, like to add an new item
@@ -271,6 +272,7 @@ xdemo.parts.SamplePart
 
 ##4.3 We export/build our application again in a different location, we name it v2.
 
+![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/export.png)
 ![alt text](https://github.com/Sean-PAN2014/rcp-update/blob/master/pic/4.%20Action/panxinyang_1476771077010_48.png)
 
 ##4.4 Now we run v1 application, it's in the v1 export location's sub folder *eclipse*
