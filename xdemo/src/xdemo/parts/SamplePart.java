@@ -45,7 +45,7 @@ public class SamplePart {
 
 		tableViewer = new TableViewer(parent);
 
-		tableViewer.setContentProvider(ArrayContentProvider.getInstance());;
+		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
 		tableViewer.setInput(createInitialDataModel());
 		tableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 	}
@@ -61,7 +61,7 @@ public class SamplePart {
 		RepoLocation.REPO_LOCATION.setLoc(txtInput.getText());
 		System.out.println(RepoLocation.REPO_LOCATION.getLoc());
 	}
-	
+
 	private List<String> createInitialDataModel() {
 //		return Arrays.asList("Sample item 1", "Sample item 2", "Sample item 3", "Sample item 4", "Sample item 5");
 		return Arrays.asList("Sample item 1", "Sample item 2", "Sample item 3", "Sample item 4", "Sample item 5", "New Item 1");
